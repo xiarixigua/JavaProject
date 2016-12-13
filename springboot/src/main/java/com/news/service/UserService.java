@@ -1,7 +1,7 @@
 package com.news.service;
 
-import cn.no7player.mapper.UserMapper;
-import cn.no7player.model.User;
+import com.news.mapper.UserMapper;
+import com.news.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,6 @@ public class UserService {
 
     public User getUserInfo(){
         User user=userMapper.findUserInfo();
-        //User user=null;
         return user;
     }
 

@@ -1,6 +1,7 @@
 package com.news.mapper;
 
-import cn.no7player.model.User;
+
+import com.news.model.User;
 
 /**
  * Created by zl on 2015/8/27.

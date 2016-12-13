@@ -1,7 +1,7 @@
 package com.news.controller;
 
-import cn.no7player.model.User;
-import cn.no7player.service.UserService;
+import com.news.model.User;
+import com.news.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

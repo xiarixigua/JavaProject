@@ -1,37 +1,33 @@
-/**
- * Created by Administrator on 2016/12/9.
- */
-var ftitAppModule = angular.module('ftitApp', ['infinite-scroll']);
+var myApp = angular.module('myApp', ['infinite-scroll']);
 
-ftitAppModule.controller('NewsController',
-    function ($scope, News) {
-        $scope.demo = new News();
-    });
+myApp.controller('DemoController', function($scope, Reddit) {
+    $scope.reddit = new Reddit();
+});
 
-// 创建后台数据交互工厂
-ftitAppModule.factory('News', function ($http) {
-    var News = function () {
+// Reddit constructor function to encapsulate HTTP and pagination logic
+myApp.factory('Reddit', function($http) {
+    var Reddit = function() {
         this.items = [];
         this.busy = false;
-        this.after = '';
-        this.page = 0;
+        this.pageSize = 30;
+        this.pageNum = 1;
     };
 
-    News.prototype.nextPage = function () {
+    Reddit.prototype.nextPage = function() {
+        debugger;
         if (this.busy) return;
         this.busy = true;
 
-        var url = "http://localhost:8080/getUserInfo?callback=JSON_CALLBACK";
-        $http.jsonp(url).success(function (data) {
+        var url = "http://127.0.0.1:8080/getUserInfo?pageNum="+this.pageNum+"&pageSize="+this.pageSize+"&callback=JSON_CALLBACK";
+        $http.jsonp(url).success(function(data) {
             var items = data;
             for (var i = 0; i < items.length; i++) {
                 this.items.push(items[i]);
             }
-            this.after = "t3_" + this.items[this.items.length - 1].id;
+            this.pageNum += 1;
             this.busy = false;
-            this.page += 1;
         }.bind(this));
     };
 
-    return News;
+    return Reddit;
 });

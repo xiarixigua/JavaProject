@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>nglnfiniteScroll</title>
+    <script type='text/javascript' src='../../angular/js/angular.js'></script>
+    <script type='text/javascript' src='../js/ng-infinite-scroll.js'></script>
+    <script type='text/javascript' src='../../angular/js/controller.js'></script>
 </head>
 <body>
-
+    <div ng-app='myApp' ng-controller='DemoController'>
+        <div infinite-scroll='reddit.nextPage()' infinite-scroll-disabled='reddit.busy' infinite-scroll-distance='0'>
+            <div ng-repeat='item in reddit.items'>
+                <span class='score'>{{item.u_id}}</span>
+                <span class='score'>{{item.name}}</span>
+                <span class='score'>{{item.age}}</span>
+                <span class='score'>{{item.password}}</span>
+            </div>
+            <div ng-show='reddit.busy'>Loading data...</div>
+        </div>
+    </div>
 </body>
 </html>
