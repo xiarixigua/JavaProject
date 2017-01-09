@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="/">
+    <title>News</title>
+    <script type="text/javascript" src="/angular/bootstrap/js/jquery-1.10.2.js"></script>
+    <script type='text/javascript' src='/angular/angular/js/angular.js'></script>
+    <script type='text/javascript' src='/angular/angular/js/news.js'></script>
+</head>
+<body ng-app="newsContentApp">
+    <div id="newsContent" ng-controller="NewsCtrl">
+    </div>
+    <div id="newsComment" ng-controller="CommentCtrl">
+        <div ng-repeat='item in items'>
+            <div>
+                <span>{{item.content}}</span><br/>
+                <a ng-click="clickLike(item.like_count = item.like_count + 1)">赞:{{item.like_count}}</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
